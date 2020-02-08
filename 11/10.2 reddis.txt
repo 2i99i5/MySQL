@@ -1,0 +1,30 @@
+> HSET emails 'ivan' 'ivan@mail.ru'
+(integer) 1
+> HSET emails 'sergey' 'sergey@list.ru'
+(integer) 1
+> HSET emails 'olga' 'helga@gmail.com'
+(integer) 1
+> HGETALL emails
+1) "ivan"
+2) "ivan@mail.ru"
+3) "sergey"
+4) "sergey@list.ru"
+5) "olga"
+6) "helga@gmail.com"
+> HGET emails 'ivan'
+"ivan@mail.ru"
+> HSET users 'ivan@mail.ru' 'ivan'
+(integer) 1
+> HSET users 'sergey@list.ru' 'sergey'
+(integer) 1
+> HSET users 'helga@gmail.com' 'olga'
+(integer) 1
+> HGETALL users
+1) "ivan@mail.ru"
+2) "ivan"
+3) "sergey@list.ru"
+4) "sergey"
+5) "helga@gmail.com"
+6) "olga"
+> HGET users 'sergey@list.ru'
+"sergey"

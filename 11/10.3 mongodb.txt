@@ -1,0 +1,45 @@
+> use shop
+switched to db shop
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> db.createCollection('catalogs')
+{ "ok" : 1 }
+> db.createCollection('products')
+{ "ok" : 1 }
+> show tables
+catalogs
+products
+> db.catalogs.insert({name: 'Процессоры'})
+WriteResult({ "nInserted" : 1 })
+> db.catalogs.insert({name: 'Мат.платы'})
+WriteResult({ "nInserted" : 1 })
+> db.catalogs.insert({name: 'Видеокарты'})
+WriteResult({ "nInserted" : 1 })
+> db.catalogs.find()
+{ "_id" : ObjectId("5e3e9c3aca3e1540045c68e7"), "name" : "Процессоры" }
+{ "_id" : ObjectId("5e3e9c4fca3e1540045c68e8"), "name" : "Мат.платы" }
+{ "_id" : ObjectId("5e3e9c5aca3e1540045c68e9"), "name" : "Видеокарты" }
+> db.products.insert(
+... {
+...   name: 'Intel Core i3-8100',
+...   description: 'Процессор для настольных ПК, основанных на Intel.',
+...   price: 7890.00,
+...   catalog_id: new ObjectId("5e3e9c3aca3e1540045c68e7")
+... }
+... );
+WriteResult({ "nInserted" : 1 })
+> db.products.find()
+{ "_id" : ObjectId("5e3e9d69ca3e1540045c68ea"), "name" : "Intel Core i3-8100", "description" : "Процессор для настольных ПК, основанных на Intel.", "price" : 7890, "catalog_id" : ObjectId("5e3e9c3aca3e1540045c68e7") }
+> db.products.insert( {   name: 'Intel Core i5-7400',   description: 'Процессор для настольных ПК, основанных на Intel.',   price: 12700.00,   catalog_id: new ObjectId("5e3e9c3aca3e1540045c68e7") } );
+WriteResult({ "nInserted" : 1 })
+> db.products.insert( {   name: 'ASUS ROG MAXIMUS X HERO',   description: 'Материнская плата ASUS.',   price: 19310.00,   catalog_id: new ObjectId("5e3e9c4fca3e1540045c68e8") } );
+WriteResult({ "nInserted" : 1 })
+> db.products.find()
+{ "_id" : ObjectId("5e3e9d69ca3e1540045c68ea"), "name" : "Intel Core i3-8100", "description" : "Процессор для настольных ПК, основанных на Intel.", "price" : 7890, "catalog_id" : ObjectId("5e3e9c3aca3e1540045c68e7") }
+{ "_id" : ObjectId("5e3e9e0dca3e1540045c68eb"), "name" : "Intel Core i5-7400", "description" : "Процессор для настольных ПК, основанных на Intel.", "price" : 12700, "catalog_id" : ObjectId("5e3e9c3aca3e1540045c68e7") }
+{ "_id" : ObjectId("5e3e9e8cca3e1540045c68ec"), "name" : "ASUS ROG MAXIMUS X HERO", "description" : "Материнская плата ASUS.", "price" : 19310, "catalog_id" : ObjectId("5e3e9c4fca3e1540045c68e8") }
+> db.products.find({catalog_id: ObjectId("5e3e9c3aca3e1540045c68e7")})
+{ "_id" : ObjectId("5e3e9d69ca3e1540045c68ea"), "name" : "Intel Core i3-8100", "description" : "Процессор для настольных ПК, основанных на Intel.", "price" : 7890, "catalog_id" : ObjectId("5e3e9c3aca3e1540045c68e7") }
+{ "_id" : ObjectId("5e3e9e0dca3e1540045c68eb"), "name" : "Intel Core i5-7400", "description" : "Процессор для настольных ПК, основанных на Intel.", "price" : 12700, "catalog_id" : ObjectId("5e3e9c3aca3e1540045c68e7") }

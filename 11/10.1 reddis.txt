@@ -1,0 +1,32 @@
+> SET '127.0.0.1' 12
+OK
+> GET '127.0.0.1'
+"12"
+> INCR '127.0.0.1'
+(integer) 13
+> GET '127.0.0.1'
+"13"
+> INCR '127.0.0.2'
+(integer) 1
+> KEYS *
+1) "127.0.0.1"
+2) "127.0.0.2"
+> HINCRBY addresses '127.0.0.1' 1
+(integer) 1
+> HGETALL addresses
+1) "127.0.0.1"
+2) "1"
+> HINCRBY addresses '127.0.0.1' 1
+(integer) 2
+> HGETALL addresses
+1) "127.0.0.1"
+2) "2"
+> HINCRBY addresses '127.0.0.2' 1
+(integer) 1
+> HGETALL addresses
+1) "127.0.0.1"
+2) "2"
+3) "127.0.0.2"
+4) "1"
+> HGET addresses '127.0.0.1'
+"2"
