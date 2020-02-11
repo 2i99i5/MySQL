@@ -38,10 +38,9 @@ ORDER BY e.division_id
 -- количество сотрудников в отделах филиала, номер филиала записывается в переменную @branchid
 SET @branchid = 1;
 SELECT
-	d.name,
-	COUNT(*)
+	(select d.name from division d where d.id=e.division_id) AS 'Отдел',
+	COUNT(*) AS 'Кол-во'
 FROM employee e
-JOIN division d ON d.id=e.division_id
 WHERE e.status = 'active' and e.branch_id = @branchid
 group by e.division_id
 ;
