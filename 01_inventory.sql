@@ -1,7 +1,14 @@
+/*
+База данных для инвентаризации техники крупной компании с крупной филиальной сетью.
+Кроме того из БД удобно выводить списки сотрудников для нужд отдела кадров или секретарей.
+*/
+-- создание базы данных
 DROP DATABASE IF EXISTS inventory;
 CREATE DATABASE inventory;
 USE inventory;
 
+
+-- создание таблиц
 DROP TABLE IF EXISTS fed_district;
 CREATE TABLE fed_district (
 	id tinyint UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY,
@@ -123,6 +130,8 @@ CREATE TABLE it_inventory (
     	ON DELETE restrict
 ) COMMENT 'список техники для нужд Подразделения ИТ';
 
+
+-- наполнение нужными данными
 INSERT INTO fed_district VALUES
   (01, 'Центральный федеральный округ', 'ЦФО'),
   (02, 'Северо-Западный федеральный округ', 'СЗФО'),
