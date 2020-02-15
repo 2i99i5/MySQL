@@ -283,10 +283,10 @@ VALUES
 ;
 
 INSERT INTO model (mfr, name, partnum) VALUES
-  ('HP', 'HP ProDesk 600 G4', '3XW93EA'),
-  ('HP', 'HP 22er', 'T3M72AA#ABA'),
-  ('HP', 'HP LaserJet Pro M426fdn', 'F6W17A'),
-  ('HP', 'HP ProLiant DL380 G6', '491324-421')
+  ('HP', 'ProDesk 600 G4', '3XW93EA'),
+  ('HP', '22er', 'T3M72AA#ABA'),
+  ('HP', 'LaserJet Pro M426fdn', 'F6W17A'),
+  ('HP', 'ProLiant DL380 G6', '491324-421')
  ;
 
 INSERT INTO tech_type (name) VALUES
